@@ -63,9 +63,6 @@ private suspend fun findMatch(
         return
     }
 
-    // 3. Find the closest match
-    // YOU MUST TUNE THIS VALUE by testing.
-    // Start with 0.7 or 0.8 and see what works.
     val MATCH_THRESHOLD = 0.8f
 
     var bestMatch: DogProfile? = null

@@ -1,15 +1,16 @@
+// Make sure this file is named build.gradle (Groovy)
+// If it is named build.gradle.kts (Kotlin), this syntax will fail.
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.ksp) // <-- This is the fix
 }
 
 android {
     namespace = "com.example.dogregistration"
     compileSdk = 34
 
-    // --- FIX 1: ALIGN JAVA AND KOTLIN COMPILERS ---
-    // This resolves the 'Inconsistent JVM-target' error by forcing Javac to use version 17.
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -27,7 +28,6 @@ android {
         compose = true
     }
 
-    // Kotlin JVM target is set to 17 (required for the Android Gradle Plugin 8.x)
     kotlinOptions {
         jvmTarget = "17"
     }
